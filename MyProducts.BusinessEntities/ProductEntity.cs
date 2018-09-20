@@ -17,12 +17,12 @@ namespace MyProducts.BusinessEntities
         public decimal Price { get; set; }
 
         public int CategoryId { get; set; }
-        public virtual CategoryEntity Category { get; set; }
+        public CategoryEntity Category { get; set; }
 
         public int ManufacturerId { get; set; }
-        public virtual ManufacturerEntity Manufacturer { get; set; }
+        public ManufacturerEntity Manufacturer { get; set; }
 
         public int SupplierId { get; set; }
-        public virtual SupplierEntity Supplier { get; set; }
+        public SupplierEntity Supplier { get; set; }
     }
 }
