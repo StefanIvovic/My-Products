@@ -9,6 +9,7 @@ namespace MyProducts.BusinessServices
 {
     public interface ICategoryServices
     {
+        IEnumerable<CategoryEntity> GetAll();
         void CreateCategory(CategoryEntity categoryEntity);
     }
 }

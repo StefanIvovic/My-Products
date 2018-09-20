@@ -1,4 +1,6 @@
-﻿using MyProducts.BusinessEntities;
+﻿using System.Collections.Generic;
+using System.Linq;
+using MyProducts.BusinessEntities;
 using MyProducts.DAL;
 using MyProducts.DAL.UnitOfWork;
 
@@ -19,6 +21,16 @@ namespace MyProducts.BusinessServices
             var categoryDb = AutoMapper.Mapper.Map<CategoryEntity, Category>(categoryEntity);
             _unitOfWork.CategoryRepository.Insert(categoryDb);
             _unitOfWork.Save();
+        }
+
+        public IEnumerable<CategoryEntity> GetAll()
+        {
+            var catDb = _unitOfWork.CategoryRepository.GetAll().ToList();
+            if (catDb == null)
+                return null;
+
+            var catEntity = AutoMapper.Mapper.Map<List<Category>, List<CategoryEntity>>(catDb);
+            return catEntity;
         }
     }
 }
