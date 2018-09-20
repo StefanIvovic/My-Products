@@ -50,6 +50,7 @@
     <Compile Include="CategoryServices.cs" />
     <Compile Include="ICategoryServices.cs" />
     <Compile Include="IManufacturerServices.cs" />
+    <Compile Include="ISupplierServices.cs" />
     <Compile Include="ManufecturerServices.cs" />
     <Compile Include="Mapper\MapperConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
