@@ -18,6 +18,7 @@ namespace MyProducts
             container.RegisterType<ICategoryServices, CategoryServices>();
             container.RegisterType<IManufacturerServices, ManufecturerServices>();
             container.RegisterType<ISupplierServices, SupplierServices>();
+            container.RegisterType<IProductServices, ProductServices>();
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }
