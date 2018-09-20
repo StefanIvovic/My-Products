@@ -54,6 +54,7 @@
     <Compile Include="ManufecturerServices.cs" />
     <Compile Include="Mapper\MapperConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SupplierServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
