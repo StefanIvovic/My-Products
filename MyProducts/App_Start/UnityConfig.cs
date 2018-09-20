@@ -16,6 +16,7 @@ namespace MyProducts
 
             // e.g. container.RegisterType<ITestService, TestService>();
             container.RegisterType<ICategoryServices, CategoryServices>();
+            container.RegisterType<IManufacturerServices, ManufecturerServices>();
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

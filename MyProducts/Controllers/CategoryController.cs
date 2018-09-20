@@ -18,11 +18,11 @@ namespace MyProducts.Controllers
             _categoryServices = categoryServices;
         }
 
-        // GET: Category
-        public ActionResult Index()
-        {
-            return View();
-        }
+        //// GET: Category
+        //public ActionResult Index()
+        //{
+        //    return View();
+        //}
 
         [HttpGet]
         public ActionResult Create()
