@@ -9,6 +9,7 @@ namespace MyProducts.BusinessServices
 {
     public interface IProductServices
     {
+        IEnumerable<ProductEntity> GetAllProducts();
         void CreateProduct(ProductEntity productEntity);
     }
 }
