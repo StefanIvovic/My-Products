@@ -80,6 +80,25 @@ namespace MyProducts.Controllers
 
         }
 
+        public ActionResult Delete(int id)
+        {
+
+            var product = _productServices.GetProductById(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            return View(product);
+        }
+
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            _productServices.DeleteProduct(id);
+            return RedirectToAction("Index");
+        }
 
     }
 }
