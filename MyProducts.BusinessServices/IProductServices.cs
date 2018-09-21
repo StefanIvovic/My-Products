@@ -11,5 +11,6 @@ namespace MyProducts.BusinessServices
     {
         IEnumerable<ProductEntity> GetAllProducts();
         void CreateProduct(ProductEntity productEntity);
+        ProductEntity GetProductById(int id);
     }
 }

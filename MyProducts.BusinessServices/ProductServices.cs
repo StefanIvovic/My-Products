@@ -27,5 +27,15 @@ namespace MyProducts.BusinessServices
             var productEntity = AutoMapper.Mapper.Map<List<Product>, List<ProductEntity>>(productDb);
             return productEntity;
         }
+
+        public ProductEntity GetProductById(int id)
+        {
+            var productdb = _unitOfWork.ProductRepository.GetById(id);
+            if (productdb == null)
+                return null;
+
+            var productEntity = AutoMapper.Mapper.Map<Product, ProductEntity>(productdb);
+            return productEntity;
+        }
     }
 }
