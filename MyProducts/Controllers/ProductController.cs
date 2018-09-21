@@ -12,11 +12,16 @@ namespace MyProducts.Controllers
     {
         private readonly IProductServices _productServices;
         private readonly ICategoryServices _categoryServices;
+        private readonly IManufacturerServices _manufacturerServices;
 
-        public ProductController(IProductServices productServices, ICategoryServices categoryServices)
+        public ProductController(
+            IProductServices productServices, 
+            ICategoryServices categoryServices,
+            IManufacturerServices manufacturerServices)
         {
             _productServices = productServices;
             _categoryServices = categoryServices;
+            _manufacturerServices = manufacturerServices;
         }
 
 
@@ -29,7 +34,9 @@ namespace MyProducts.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            ViewBag.CategoryId = new SelectList(_categoryServices.GetAll(), "Id", "Name");
+            //TODO finish adding select lists for the rest of models required by product
+            ViewBag.CategoryId = new SelectList(_categoryServices.GetAllCategories(), "Id", "Name");
+            ViewBag.ManufacId = new SelectList(_manufacturerServices.GetAllManufacturers(), "Id", "Name");
             return View();
         }
 
