@@ -16,7 +16,7 @@ namespace MyProducts.Controllers
         private readonly ISupplierServices _supplierServices;
 
         public ProductController(
-            IProductServices productServices, 
+            IProductServices productServices,
             ICategoryServices categoryServices,
             IManufacturerServices manufacturerServices,
             ISupplierServices supplierServices)
@@ -28,11 +28,12 @@ namespace MyProducts.Controllers
         }
 
 
-        //// GET: Product
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
+        // GET: Product
+        public ActionResult Index()
+        {
+            var products = _productServices.GetAllProducts();
+            return View(products);
+        }
 
         [HttpGet]
         public ActionResult Create()
