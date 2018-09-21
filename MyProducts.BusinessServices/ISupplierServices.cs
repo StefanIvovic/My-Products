@@ -9,6 +9,7 @@ namespace MyProducts.BusinessServices
 {
     public  interface ISupplierServices
     {
+        IEnumerable<SupplierEntity> GetAllSuppliers();
         void CreateSupplier(SupplierEntity supplierEntity);
     }
 }
