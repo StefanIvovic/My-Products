@@ -13,5 +13,6 @@ namespace MyProducts.BusinessServices
         void CreateProduct(ProductEntity productEntity);
         ProductEntity GetProductById(int id);
         void UpdateProduct(ProductEntity productEntity);
+        void DeleteProduct(int id);
     }
 }

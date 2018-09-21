@@ -21,6 +21,16 @@ namespace MyProducts.BusinessServices
             _unitOfWork.Save();
         }
 
+        public void DeleteProduct(int id)
+        {
+            var productDb = _unitOfWork.ProductRepository.GetById(id);
+            if(productDb != null)
+            {
+                _unitOfWork.ProductRepository.Delete(productDb);
+                _unitOfWork.Save();
+            }
+        }
+
         public IEnumerable<ProductEntity> GetAllProducts()
         {
             var productDb = _unitOfWork.ProductRepository.GetAll().ToList();
