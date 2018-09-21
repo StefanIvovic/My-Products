@@ -57,32 +57,5 @@ namespace MyProducts.Controllers
 
             return View(productEntity);
         }
-
-        public ActionResult Edit(int id)
-        {
-            var product = _productServices.GetProductById(id);
-            if (product == null)
-                return HttpNotFound();
-
-            ViewBag.CategoryList = new SelectList(_categoryServices.GetAllCategories(), "Id", "Name");
-            ViewBag.ManufacList = new SelectList(_manufacturerServices.GetAllManufacturers(), "Id", "Name");
-            ViewBag.SupplierList = new SelectList(_supplierServices.GetAllSuppliers(), "Id", "Name");
-            return View(product);
-        }
-
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(ProductEntity productEntity)
-        {
-            if (ModelState.IsValid)
-            {
-                _productServices.UpdateProduct(productEntity);
-                return RedirectToAction("Index");
-
-            }
-            return View(productEntity);
-            
-        }
     }
 }
