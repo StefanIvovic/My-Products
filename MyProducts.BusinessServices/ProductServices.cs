@@ -37,5 +37,19 @@ namespace MyProducts.BusinessServices
             var productEntity = AutoMapper.Mapper.Map<Product, ProductEntity>(productdb);
             return productEntity;
         }
+
+        public void UpdateProduct(ProductEntity productEntity)
+        {
+            var productDb = _unitOfWork.ProductRepository.GetById(productEntity.Id);
+            if(productDb != null)
+            {
+                AutoMapper.Mapper.Map(productEntity, productDb);
+                productDb.Manufacturer = _unitOfWork.ManufacturerRepository.GetById(productDb.Manufacturer.Id);
+                productDb.Supplier = _unitOfWork.SupplierRepository.GetById(productDb.Supplier.Id);
+                productDb.Category = _unitOfWork.CategoryRepository.GetById(productDb.Category.Id);
+                _unitOfWork.ProductRepository.Update(productDb);
+                _unitOfWork.Save();
+            }
+        }
     }
 }
