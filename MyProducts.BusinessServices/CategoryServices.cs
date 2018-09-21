@@ -23,7 +23,7 @@ namespace MyProducts.BusinessServices
             _unitOfWork.Save();
         }
 
-        public IEnumerable<CategoryEntity> GetAll()
+        public IEnumerable<CategoryEntity> GetAllCategories()
         {
             var catDb = _unitOfWork.CategoryRepository.GetAll().ToList();
             if (catDb == null)
