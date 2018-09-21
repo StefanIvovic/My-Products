@@ -38,7 +38,7 @@ namespace MyProducts.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            //TODO finish adding select lists for the rest of models required by product
+            //this is bad practice and should be replaces with view model
             ViewBag.CategoryList = new SelectList(_categoryServices.GetAllCategories(), "Id", "Name");
             ViewBag.ManufacList = new SelectList(_manufacturerServices.GetAllManufacturers(), "Id", "Name");
             ViewBag.SupplierList = new SelectList(_supplierServices.GetAllSuppliers(), "Id", "Name");
@@ -62,6 +62,8 @@ namespace MyProducts.Controllers
             var product = _productServices.GetProductById(id);
             if (product == null)
                 return HttpNotFound();
+
+            //this is bad practice and should be replaces with view model
             ViewBag.CategoryList = new SelectList(_categoryServices.GetAllCategories(), "Id", "Name");
             ViewBag.ManufacList = new SelectList(_manufacturerServices.GetAllManufacturers(), "Id", "Name");
             ViewBag.SupplierList = new SelectList(_supplierServices.GetAllSuppliers(), "Id", "Name");
