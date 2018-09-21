@@ -9,5 +9,6 @@ namespace MyProducts.BusinessServices
     public interface IManufacturerServices
     {
         void CreateManufacturer(ManufacturerEntity manufacturerEntity);
+        IEnumerable<ManufacturerEntity> GetAllManufacturers();
     }
 }

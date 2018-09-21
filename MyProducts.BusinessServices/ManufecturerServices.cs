@@ -2,6 +2,8 @@
 using MyProducts.DAL;
 using MyProducts.DAL.UnitOfWork;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace MyProducts.BusinessServices
 {
@@ -18,6 +20,13 @@ namespace MyProducts.BusinessServices
             var manufacturerDb = AutoMapper.Mapper.Map<ManufacturerEntity, Manufacturer>(manufacturerEntity);
             _unitOfWork.ManufacturerRepository.Insert(manufacturerDb);
             _unitOfWork.Save();
+        }
+
+        public IEnumerable<ManufacturerEntity> GetAllManufacturers()
+        {
+            var manufacturersDb = _unitOfWork.ManufacturerRepository.GetAll().ToList();
+            var manufacturersEntity = AutoMapper.Mapper.Map<List<Manufacturer>, List<ManufacturerEntity>>(manufacturersDb);
+            return manufacturersEntity;
         }
     }
 }
