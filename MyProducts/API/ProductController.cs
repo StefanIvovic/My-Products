@@ -14,6 +14,11 @@ using MyProducts.BusinessServices;
 
 namespace MyProducts.API
 {
+    //NOTE project is using Lazy loading method for loading data from db. this will return loop references. this is undesirable for web api
+    //fix: disable lazy loading and use egar loading with include() method for desirable properties  
+
+
+
     [RoutePrefix("api/product")]
     public class ProductController : ApiController
     {
