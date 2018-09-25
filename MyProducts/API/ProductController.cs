@@ -55,8 +55,9 @@ namespace MyProducts.API
         }
 
         // PUT: api/Product/
-        [Route("UpdateProduct/{productEntity}")]
-        public HttpResponseMessage UpdateProduct(ProductEntity productEntity)
+        [Route("UpdateProduct")]
+        [HttpPut]
+        public HttpResponseMessage UpdateProduct([FromBody]ProductEntity productEntity)
         {
             try
             {
@@ -70,8 +71,9 @@ namespace MyProducts.API
         }
 
         // POST: api/Product
-        [Route("CreateProduct/productEntity")]
-        public HttpResponseMessage CreateProduct(ProductEntity productEntity)
+        [Route("CreateProduct")]
+        [HttpPost]
+        public HttpResponseMessage CreateProduct([FromBody]ProductEntity productEntity)
         {
             try
             {
