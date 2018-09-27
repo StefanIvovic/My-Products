@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -38,6 +39,21 @@ namespace MyProducts.DAL.GenericRepository
         public virtual IEnumerable<TEntity> Get()
         {
             IQueryable<TEntity> query = DbSet;
+            return query.ToList();
+        }
+
+        /// <summary>
+        /// Get all entities from db
+        /// </summary>
+        /// <param name="includes"></param>
+        /// <returns></returns>
+        public virtual IEnumerable<TEntity> Gett(params Expression<Func<TEntity, object>>[] includes)
+        {
+            IQueryable<TEntity> query = DbSet;
+
+            foreach (var inc in includes)
+                query = query.Include(inc);
+
             return query.ToList();
         }
 
@@ -151,7 +167,7 @@ namespace MyProducts.DAL.GenericRepository
         /// <param name="predicate"></param>
         /// <param name="include"></param>
         /// <returns></returns>
-        public IQueryable<TEntity> GetWithInclude(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate, params string[] include)
+        public IQueryable<TEntity> GetWithInclude(Expression<Func<TEntity, bool>> predicate, params string[] include)
         {
             IQueryable<TEntity> query = this.DbSet;
             query = include.Aggregate(query, (current, inc) => current.Include(inc));
