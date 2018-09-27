@@ -25,7 +25,7 @@ namespace MyProducts.DAL
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
+                
         }
     }
 }
